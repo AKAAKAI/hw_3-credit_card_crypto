@@ -9,16 +9,10 @@ module LuhnValidator
     total_num = 0
     nums_a.length.times do |x| 
     	if x.even? 
-    		
     		total_num += nums_a[x]
     	else 
-
-    		if (nums_a[x]*2) >= 10
-				tem = (nums_a[x]*2).to_s.chars.map(&:to_i) 
-    			tem.length.times { |q| total_num += tem[q] }
-    		else
-    			total_num += nums_a[x]*2 
-    		end
+    		tem =  (nums_a[x]*2) >= 10 ? (nums_a[x]*2).to_s.chars.map(&:to_i) : tem = (nums_a[x]*2).to_s.chars.map(&:to_i) 
+    		tem.length.times { |q| total_num += tem[q] }
     	end
     end
 

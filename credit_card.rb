@@ -6,6 +6,7 @@ class CreditCard
   include LuhnValidator
   # instance variables with automatic getter/setter methods
   attr_accessor :number, :expiration_date, :owner, :credit_network
+  attr_accessor :hash_attr
 
   def initialize(number, expiration_date, owner, credit_network)
     # TODO: initialize the instance variables listed above
@@ -13,6 +14,7 @@ class CreditCard
     @expiration_date = expiration_date
     @owner = owner
     @credit_network = credit_network
+    @hash_attr = Hash.new
   end
 
   # returns json string
@@ -39,6 +41,7 @@ class CreditCard
     #   - Produce a hash (using default hash method) of the credit card's
     #     serialized contents.
     #   - Credit cards with identical information should produce the same hash
+    @hash_attr = to_s
   end
 
   # return a cryptographically secure hash
